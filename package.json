@@ -2,7 +2,7 @@
   "name": "clock-next",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gadielkalleb.github.io/clock-time-infinity/",
+  "homepage": "github-page/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
