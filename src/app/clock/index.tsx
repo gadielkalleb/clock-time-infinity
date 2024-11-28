@@ -1,23 +1,35 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Relogio = () => {
-    const [time, setTime] = useState(new Date());
+  const options = {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    timeZone: 'America/Sao_Paulo'
+  } as any;
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
+  const [time, setTime] = useState("");
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const formattedDateTime = new Intl
+        .DateTimeFormat("pt-BR", options)
+        .format(new Date());
 
-        return () => clearInterval(interval);
-    }, []);
+      setTime(formattedDateTime);
 
-    return (
-        <div className="">
-            <h2 className="relogio-time">{time.toLocaleTimeString()}</h2>
-        </div>
-    );
-}
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="">
+      <h2 className="relogio-time">{time}</h2>
+    </div>
+  );
+};
 
 export default Relogio;
